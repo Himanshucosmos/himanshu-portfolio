@@ -1,104 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Serif+JP:wght@300;400;700&display=swap');
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: #151312;
-    --foreground: #f5f5f5;
-    
-    --card: #1f1c1b;
-    --card-foreground: #f5f5f5;
-    
-    --popover: #1f1c1b;
-    --popover-foreground: #f5f5f5;
-    
-    --primary: #a855f7;
-    --primary-foreground: #ffffff;
-    
-    --secondary: #c5ff41;
-    --secondary-foreground: #151312;
-    
-    --muted: #2a2524;
-    --muted-foreground: #998f8f;
-    
-    --accent: #2a2524;
-    --accent-foreground: #a855f7;
-    
-    --destructive: #ef4444;
-    --destructive-foreground: #f5f5f5;
-    
-    --border: #332d2c;
-    --input: #332d2c;
-    --ring: #a855f7;
-    
-    --radius: 0.5rem;
-  }
+/* ============================================================
+   DARK MODE (default) — Deep void. Bleach Hollow aesthetic.
+============================================================ */
+:root,
+[data-theme="dark"] {
+  --background:   #08060f;   /* Deep Hollow void — violet-midnight */
+  --surface:      #0f0c1c;   /* Dark indigo surface */
+  --surface-2:    #17132a;   /* Slightly lighter violet */
+  --foreground:   #edeaf5;   /* Cool white with violet cast */
+  --fg-muted:     #6b6480;   /* Muted purple-grey */
+  --fg-subtle:    #2a2440;   /* Very dark violet */
+
+  --primary:      #ff4500;   /* Ichigo orange */
+  --primary-dim:  rgba(255,69,0,0.14);
+  --primary-glow: rgba(255,69,0,0.4);
+
+  --secondary:    #00d4d4;   /* Spirit teal */
+  --secondary-dim: rgba(0,212,212,0.12);
+  --secondary-glow: rgba(0,212,212,0.3);
+
+  --tertiary:     #a78bfa;   /* Hollow purple — lighter in dark mode */
+  --tertiary-dim: rgba(167,139,250,0.12);
+
+  --gold:         #f5a623;   /* Mugen gold / Norse gold */
+  --gold-dim:     rgba(245,166,35,0.12);
+
+  --border:       #1f1a35;   /* Dark violet border */
+  --border-bright: #312a50;
+
+  /* Blobs — visible but not overpowering */
+  --blob-1: rgba(255,69,0,0.08);
+  --blob-2: rgba(0,212,212,0.07);
+  --blob-3: rgba(139,92,246,0.06);
+
+  --text-stroke-primary:   #ff4500;
+  --text-stroke-secondary: #00d4d4;
+}
+
+/* ============================================================
+   LIGHT MODE — White canvas. Vibrant Bleach art colors POP.
+============================================================ */
+[data-theme="light"] {
+  --background:   #fafaf2;   /* Warm paper white */
+  --surface:      #ffffff;
+  --surface-2:    #f5f3eb;
+  --foreground:   #0d0d11;   /* Near-black text */
+  --fg-muted:     #6b6b80;
+  --fg-subtle:    #d4d4e0;
+
+  --primary:      #e63000;   /* Slightly deeper orange for contrast on white */
+  --primary-dim:  rgba(230,48,0,0.08);
+  --primary-glow: rgba(230,48,0,0.25);
+
+  --secondary:    #008080;   /* Deeper teal */
+  --secondary-dim: rgba(0,128,128,0.08);
+  --secondary-glow: rgba(0,128,128,0.2);
+
+  --tertiary:     #6d28d9;   /* Deeper purple */
+  --tertiary-dim: rgba(109,40,217,0.08);
+
+  --gold:         #d48f00;   /* Deeper gold */
+  --gold-dim:     rgba(212,143,0,0.1);
+
+  --border:       #e2e0d8;
+  --border-bright: #cccabf;
+
+  /* Blobs — VERY vibrant in light mode — colors burst on white */
+  --blob-1: rgba(255,69,0,0.15);
+  --blob-2: rgba(0,212,212,0.12);
+  --blob-3: rgba(139,92,246,0.10);
+
+  --text-stroke-primary:   #e63000;
+  --text-stroke-secondary: #008080;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --radius: var(--radius);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background:  var(--background);
+  --color-foreground:  var(--foreground);
+  --color-primary:     var(--primary);
+  --color-secondary:   var(--secondary);
+  --color-muted:       var(--surface-2);
+  --color-muted-foreground: var(--fg-muted);
+  --color-border:      var(--border);
+  --font-sans:   'Oswald', sans-serif;
+  --font-mono:   'Space Mono', monospace;
+  --font-serif:  'Noto Serif JP', serif;
 }
 
+/* ===========================
+   BASE
+=========================== */
 @layer base {
-  * {
-    border-color: var(--border);
-  }
-  body, html {
+  * { border-color: var(--border); box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
     background-color: var(--background);
     color: var(--foreground);
-    @apply antialiased;
-    scroll-behavior: smooth;
+    font-family: 'Space Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.4s ease, color 0.3s ease;
+    overflow-x: hidden;
   }
+  ::selection { background-color: var(--primary-glow); color: var(--foreground); }
 }
 
-/* Custom scrollbar for webkit */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+/* ===========================
+   SCROLLBAR
+=========================== */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--primary), var(--secondary)); }
+
+/* ===========================
+   KEYFRAMES
+=========================== */
+@keyframes float-kanji {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-16px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes eq-bar {
+  0%, 100% { transform: scaleY(0.25); }
+  50%       { transform: scaleY(1); }
+}
+@keyframes blob-drift {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(6%,-5%) scale(1.05); }
+  66%      { transform: translate(-4%,4%) scale(0.97); }
+}
+@keyframes glow-pulse {
+  0%,100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes slide-up {
+  from { transform: translateY(12px); opacity: 0; filter: blur(4px); }
+  to   { transform: translateY(0);    opacity: 1; filter: blur(0); }
 }
 
-::-webkit-scrollbar-track {
-  background: var(--background); 
-}
- 
-::-webkit-scrollbar-thumb {
-  background: var(--muted); 
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground); 
-}
-
-/* Utilities for animations */
+/* ===========================
+   UTILITY CLASSES
+=========================== */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .font-oswald     { font-family: 'Oswald', sans-serif; }
+  .font-space-mono { font-family: 'Space Mono', monospace; }
+  .font-noto-jp    { font-family: 'Noto Serif JP', serif; }
+  .text-balance    { text-wrap: balance; }
+
+  /* MARQUEE — horizontal scroll ticker */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
   }
-  
-  .glassmorphism {
-    @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  .marquee-track:hover { animation-play-state: paused; }
+
+  /* Katana divider */
+  .katana-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary) 30%, var(--secondary) 70%, transparent);
   }
+
+  /* Halftone bg */
+  .halftone {
+    background-image: radial-gradient(circle, var(--fg-subtle) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+
+  /* Tags */
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    color: var(--fg-muted);
+    transition: border-color 0.3s, color 0.3s;
+    display: inline-block;
+  }
+  .tag:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* Vivid gradient border on hover */
+  .grad-border {
+    position: relative;
+    background: var(--surface);
+    transition: box-shadow 0.4s;
+  }
+  .grad-border:hover {
+    box-shadow:
+      0 0 0 1px var(--primary),
+      0 0 30px var(--primary-glow);
+  }
+
+  /* Slash underline */
+  .slash-line { position: relative; }
+  .slash-line::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0; right: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .slash-line:hover::after { transform: scaleX(1); }
+
+  /* Scanlines */
+  .scanlines::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.018) 2px, rgba(0,0,0,0.018) 4px
+    );
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  /* EQ bars */
+  .eq-bar {
+    display: inline-block;
+    width: 3px;
+    background: var(--secondary);
+    transform-origin: bottom;
+    animation: eq-bar 0.8s ease-in-out infinite;
+  }
+
+  /* Blob ambient glow */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: blob-drift 12s ease-in-out infinite;
+  }
+
+  /* Glass card */
+  .glass {
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+  }
+
+  /* Outline text helper */
+  .text-outline-primary {
+    -webkit-text-stroke: 1.5px var(--text-stroke-primary);
+    color: transparent;
+  }
+  .text-outline-secondary {
+    -webkit-text-stroke: 1.5px var(--text-stroke-secondary);
+    color: transparent;
+  }
+
+  /* ============================
+     BLOG PROSE STYLES
+  ============================ */
+  .prose-post {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8125rem;
+    line-height: 1.9;
+    color: var(--fg-muted);
+  }
+  .prose-post h1, .prose-post h2, .prose-post h3, .prose-post h4 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--foreground);
+    margin: 2rem 0 0.75rem;
+  }
+  .prose-post h2 { font-size: 1.5rem; }
+  .prose-post h3 { font-size: 1.15rem; }
+  .prose-post p   { margin: 1rem 0; }
+  .prose-post a   { color: var(--secondary); text-decoration: none; border-bottom: 1px solid var(--secondary-dim); }
+  .prose-post a:hover { border-bottom-color: var(--secondary); }
+  .prose-post strong { color: var(--foreground); font-weight: 700; }
+  .prose-post em { color: var(--fg-muted); font-style: italic; }
+  .prose-post code {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    background: var(--surface);
+    color: var(--secondary);
+    padding: 0.15rem 0.4rem;
+    border: 1px solid var(--border);
+  }
+  .prose-post pre {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .prose-post pre code { background: none; border: none; padding: 0; color: var(--foreground); }
+  .prose-post blockquote {
+    border-left: 2px solid var(--primary);
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    color: var(--fg-muted);
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+  .prose-post hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+  .prose-post ul, .prose-post ol { padding-left: 1.5rem; margin: 1rem 0; }
+  .prose-post li { margin: 0.35rem 0; }
+  .prose-post ul li { list-style-type: "✦  "; color: var(--primary); }
+  .prose-post ul li span, .prose-post ul li p { color: var(--fg-muted); }
 }
+

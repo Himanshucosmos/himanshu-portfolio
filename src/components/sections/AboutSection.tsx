@@ -1,95 +1,150 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Headphones, TrendingUp } from "lucide-react";
+
+const fadeInView = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.8, delay, ease: [0.23, 1, 0.32, 1] as [number, number, number, number] },
+});
+
+const skills = [
+  { category: "Growth", items: ["GTM Strategy", "User Acquisition", "Sales Pipeline", "Marketing Ops"], color: "var(--primary)" },
+  { category: "Tech",   items: ["Python", "Next.js", "TypeScript", "Supabase", "Rust"],                color: "var(--secondary)" },
+  { category: "Craft",  items: ["Bartending", "DJing", "Music Curation", "People Design"],            color: "var(--tertiary)" },
+];
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-16 md:py-24 relative">
+    <section id="about" className="relative py-32 overflow-hidden" style={{ background: "var(--background)" }}>
+      {/* Halftone accent */}
+      <div className="absolute top-0 right-0 w-1/3 h-full halftone opacity-20 pointer-events-none" aria-hidden />
+      {/* Ambient blob */}
+      <div className="blob" style={{ width: 300, height: 300, top: 0, left: 0,
+        background: "radial-gradient(circle, var(--blob-1) 0%, transparent 70%)" }} aria-hidden />
+
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-          >
-            A unique <br/><span className="text-white/50">trajectory.</span>
-          </motion.h2>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ delay: 0.2 }}
-            className="max-w-xl text-lg text-muted-foreground space-y-4"
-          >
-            <p>
-              &quot;Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work.&quot; — Steve Jobs
+
+        {/* Section label */}
+        <motion.div {...fadeInView()} className="flex items-center gap-4 mb-12">
+          <div className="h-px w-12" style={{ background: "var(--secondary)" }} />
+          <span className="font-space-mono text-xs tracking-[0.25em] uppercase" style={{ color: "var(--secondary)" }}>
+            Chapter 02 — About
+          </span>
+        </motion.div>
+
+        {/* FULL-WIDTH heading — no grid here so it can't overflow */}
+        <motion.div {...fadeInView(0.1)} className="mb-4">
+          <h2 className="font-oswald uppercase leading-none" style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}>
+            <span className="block" style={{ color: "var(--fg-subtle)" }}>A Unique</span>
+            <span className="block" style={{ color: "var(--foreground)" }}>Trajectory.</span>
+          </h2>
+        </motion.div>
+
+        <div className="katana-line w-full mb-12" />
+
+        {/* Two-column: Japanese accent left, bio right */}
+        <div className="grid md:grid-cols-2 gap-12 mb-20">
+          {/* Left — Japanese accent + kanji */}
+          <motion.div {...fadeInView(0.15)} className="flex flex-col gap-6">
+            <div className="font-noto-jp text-4xl" style={{ color: "var(--secondary)", opacity: 0.3 }}>軌跡</div>
+            <p className="font-space-mono text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>
+              I moved to Bangalore with a one-way ticket and blind faith. Night
+              shifts funded my studies — failures became redirections.
             </p>
-            <p>
-              I moved to Bangalore with a one-way ticket and blind faith. I funded my studies working night shifts and embraced failures as redirections. That journey led me from Science to Bartending, and now to driving Growth for innovative tech companies.
+            <p className="font-space-mono text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>
+              From Science labs to bar counters, DJ booths, and now — driving
+              Growth for innovative companies.
             </p>
+          </motion.div>
+
+          {/* Right — Quote */}
+          <motion.div {...fadeInView(0.2)} className="flex flex-col justify-center">
+            <div className="border-l-2 pl-5" style={{ borderColor: "var(--primary)" }}>
+              <p className="font-space-mono text-sm italic leading-relaxed" style={{ color: "var(--fg-muted)" }}>
+                &ldquo;Your work is going to fill a large part of your life, and the
+                only way to be truly satisfied is to do what you believe is great work.&rdquo;
+              </p>
+              <cite className="font-oswald text-xs uppercase tracking-widest mt-3 block not-italic" style={{ color: "var(--primary)" }}>
+                — Steve Jobs
+              </cite>
+            </div>
           </motion.div>
         </div>
 
-        {/* Bento Grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-2 glassmorphism rounded-3xl p-8 flex flex-col justify-between min-h-[300px]"
-          >
-            <TrendingUp className="h-10 w-10 text-primary mb-6" />
-            <div>
-              <h3 className="text-2xl font-semibold mb-2">Growth & Operations</h3>
-              <p className="text-muted-foreground">Expertise in Sales, Marketing, and Full-life Cycle Recruiting. Driving user acquisition and building GTM strategies from the ground up.</p>
-            </div>
-          </motion.div>
+        {/* Skill rows */}
+        <div className="border-t" style={{ borderColor: "var(--border)" }}>
+          {skills.map((skill, i) => (
+            <motion.div
+              key={skill.category}
+              {...fadeInView(0.1 * i)}
+              className="group flex flex-col md:flex-row md:items-center gap-4 py-8 border-b transition-colors duration-300 cursor-default"
+              style={{ borderColor: "var(--border)" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderBottomColor = skill.color; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderBottomColor = "var(--border)"; }}
+            >
+              <div className="md:w-40 flex-shrink-0">
+                <span
+                  className="font-oswald text-2xl uppercase transition-colors duration-300"
+                  style={{ color: "var(--fg-subtle)" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = skill.color; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--fg-subtle)"; }}
+                >
+                  {skill.category}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2 flex-1">
+                {skill.items.map(item => <span key={item} className="tag">{item}</span>)}
+              </div>
+              <div
+                className="text-xl flex-shrink-0 transition-colors duration-300"
+                style={{ color: "var(--fg-muted)" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = skill.color; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--fg-muted)"; }}
+              >
+                →
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="glassmorphism rounded-3xl p-8 flex flex-col justify-between min-h-[300px]"
+        {/* Philosophy / CTA card */}
+        <motion.div
+          {...fadeInView(0.3)}
+          className="mt-20 relative border p-10 overflow-hidden grad-border"
+          style={{ borderColor: "var(--border)" }}
+        >
+          <div
+            className="absolute right-8 top-1/2 -translate-y-1/2 font-noto-jp text-8xl pointer-events-none select-none"
+            style={{ color: "var(--primary)", opacity: 0.04 }}
+            aria-hidden
           >
-            <Headphones className="h-10 w-10 text-secondary mb-6" />
-            <div>
-              <h3 className="text-2xl font-semibold mb-2">Hospitality & DJing</h3>
-              <p className="text-muted-foreground">Bartender and aspiring DJ. Deeply curious about the intersection of people, music, and crafting unforgettable experiences.</p>
+            無
+          </div>
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8">
+            <div className="flex-1">
+              <h3 className="font-oswald text-3xl uppercase mb-2" style={{ color: "var(--foreground)" }}>
+                &ldquo;Saying no is{" "}
+                <span style={{ color: "var(--primary)", textShadow: "0 0 20px var(--primary-glow)" }}>
+                  saving time.
+                </span>&rdquo;
+              </h3>
+              <p className="font-space-mono text-xs tracking-widest" style={{ color: "var(--fg-muted)" }}>
+                I value audacity and curiosity in every conversation.
+              </p>
             </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="glassmorphism rounded-3xl p-8 flex flex-col justify-between min-h-[300px]"
-          >
-            <GraduationCap className="h-10 w-10 text-primary mb-6" />
-            <div>
-              <h3 className="text-2xl font-semibold mb-2">Science & Tech</h3>
-              <p className="text-muted-foreground">BSc in Physics, CS, Stats & Psych. Trained in Python Full Stack, with hands-on experience using Rust in operations.</p>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="md:col-span-2 glassmorphism rounded-3xl p-8 bg-gradient-to-br from-primary/10 to-transparent flex flex-col justify-center items-center text-center min-h-[300px]"
-          >
-            <h3 className="text-3xl font-bold mb-4">&quot;Saying no is saving time.&quot;</h3>
-            <p className="text-muted-foreground mb-6">I value audacity and curiosity in every conversation.</p>
-            <a href="#contact" className="border border-white/20 rounded-full px-6 py-3 hover:text-secondary hover:border-secondary/80 transition-colors">
-              Still reading? Let&apos;s chat.
+            <a
+              href="#contact"
+              className="font-space-mono text-xs uppercase tracking-widest px-6 py-3 border flex-shrink-0 transition-all duration-300"
+              style={{ borderColor: "var(--border)", color: "var(--fg-muted)" }}
+              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = "var(--secondary)"; el.style.color = "var(--secondary)"; }}
+              onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = "var(--border)"; el.style.color = "var(--fg-muted)"; }}
+            >
+              Still reading? Let&apos;s chat →
             </a>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
