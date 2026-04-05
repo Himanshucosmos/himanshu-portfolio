@@ -227,11 +227,11 @@ export function HeroSection() {
           {/* MEGA HEADING */}
           <motion.div variants={fadeUp}>
             <h1 className="font-oswald uppercase leading-none" style={{ fontSize: "clamp(3.5rem, 11vw, 9rem)" }}>
-              <span className="block" style={{ color: "var(--primary)", textShadow: "0 0 60px var(--primary-glow)" }}>
+              <span className="block" style={{ color: "var(--primary)", textShadow: "0 0 40px var(--primary-glow)" }}>
                 Growth
               </span>
-              <span className="block" style={{ color: "var(--fg-subtle)", lineHeight: 0.9 }}>&amp;</span>
-              <span className="block text-outline-secondary" style={{ lineHeight: 0.9 }}>
+              <span className="block opacity-60" style={{ color: "var(--fg-subtle)", lineHeight: 0.9 }}>&amp;</span>
+              <span className="block text-outline-secondary" style={{ lineHeight: 0.9, opacity: 0.8 }}>
                 Ops.
               </span>
             </h1>
@@ -240,7 +240,7 @@ export function HeroSection() {
           {/* Japanese + Quote + Bio */}
           <motion.div variants={fadeUp} className="flex items-start gap-8 mt-2">
             <div className="hidden md:block flex-shrink-0">
-              <div className="font-noto-jp text-xl leading-loose" style={{ writingMode: "vertical-rl", color: "var(--fg-muted)", opacity: 0.5 }}>
+              <div className="font-noto-jp text-xl leading-loose" style={{ writingMode: "vertical-rl", color: "var(--fg-muted)", opacity: 0.35 }}>
                 比満洲の軌跡
               </div>
             </div>

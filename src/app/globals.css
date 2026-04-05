@@ -6,37 +6,37 @@
 ============================================================ */
 :root,
 [data-theme="dark"] {
-  --background:   #08060f;   /* Deep Hollow void — violet-midnight */
-  --surface:      #0f0c1c;   /* Dark indigo surface */
-  --surface-2:    #17132a;   /* Slightly lighter violet */
-  --foreground:   #edeaf5;   /* Cool white with violet cast */
-  --fg-muted:     #6b6480;   /* Muted purple-grey */
-  --fg-subtle:    #2a2440;   /* Very dark violet */
+  --background:   #030305;   /* Near-black charcoal with deep navy depth */
+  --surface:      #08080f;   /* Subtle elevation */
+  --surface-2:    #0f0f18;   /* Secondary surface layer */
+  --foreground:   #f2f2f7;   /* Clean white with subtle cooling */
+  --fg-muted:     #8e8ea0;   /* Higher contrast muted text for readability */
+  --fg-subtle:    #1e1e2e;   /* Very subtle background highlights */
 
-  --primary:      #ff4500;   /* Ichigo orange */
-  --primary-dim:  rgba(255,69,0,0.14);
-  --primary-glow: rgba(255,69,0,0.4);
+  --primary:      #ff4500;   /* Ichigo orange — slightly more vibrant */
+  --primary-dim:  rgba(255,69,0,0.12);
+  --primary-glow: rgba(255,69,0,0.3);
 
-  --secondary:    #00d4d4;   /* Spirit teal */
-  --secondary-dim: rgba(0,212,212,0.12);
-  --secondary-glow: rgba(0,212,212,0.3);
+  --secondary:    #00dfdf;   /* Spirit teal — more presence */
+  --secondary-dim: rgba(0,223,223,0.1);
+  --secondary-glow: rgba(0,223,223,0.25);
 
-  --tertiary:     #a78bfa;   /* Hollow purple — lighter in dark mode */
-  --tertiary-dim: rgba(167,139,250,0.12);
+  --tertiary:     #b8a5ff;   /* Refined Hollow purple */
+  --tertiary-dim: rgba(184,165,255,0.1);
 
-  --gold:         #f5a623;   /* Mugen gold / Norse gold */
-  --gold-dim:     rgba(245,166,35,0.12);
+  --gold:         #ffb700;   /* Richer gold for contrast */
+  --gold-dim:     rgba(255,183,0,0.1);
 
-  --border:       #1f1a35;   /* Dark violet border */
-  --border-bright: #312a50;
+  --border:       #141421;   /* Deeper, more integrated borders */
+  --border-bright: #252538;
 
-  /* Blobs — visible but not overpowering */
-  --blob-1: rgba(255,69,0,0.08);
-  --blob-2: rgba(0,212,212,0.07);
-  --blob-3: rgba(139,92,246,0.06);
+  /* Blobs — more atmospheric and blended */
+  --blob-1: rgba(255,69,0,0.06);
+  --blob-2: rgba(0,223,223,0.05);
+  --blob-3: rgba(184,165,255,0.04);
 
   --text-stroke-primary:   #ff4500;
-  --text-stroke-secondary: #00d4d4;
+  --text-stroke-secondary: #00dfdf;
 }
 
 /* ============================================================
@@ -250,22 +250,25 @@
     animation: blob-drift 12s ease-in-out infinite;
   }
 
-  /* Glass card */
+  /* Glass card — more translucent and blended */
   .glass {
-    background: color-mix(in srgb, var(--surface) 80%, transparent);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 65%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   }
 
   /* Outline text helper */
   .text-outline-primary {
-    -webkit-text-stroke: 1.5px var(--text-stroke-primary);
+    -webkit-text-stroke: 1px var(--text-stroke-primary);
     color: transparent;
+    opacity: 0.8;
   }
   .text-outline-secondary {
-    -webkit-text-stroke: 1.5px var(--text-stroke-secondary);
+    -webkit-text-stroke: 1px var(--text-stroke-secondary);
     color: transparent;
+    opacity: 0.8;
   }
 
   /* ============================
