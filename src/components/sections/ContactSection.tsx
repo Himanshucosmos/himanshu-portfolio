@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const socials = [
   { label: "GitHub",      href: "https://github.com/Himanshucosmos",                       handle: "@Himanshucosmos" },
-  { label: "X / Twitter", href: "https://x.com",                                           handle: "@himanshu" },
-  { label: "LinkedIn",    href: "https://linkedin.com/in/himanshu-resilience",              handle: "himanshu-resilience" },
+  { label: "X / Twitter", href: "https://x.com/himanshucosmos",                            handle: "@himanshucosmos" },
+  { label: "LinkedIn",    href: "https://www.linkedin.com/in/himanshucosmos/",             handle: "himanshucosmos" },
 ];
 
 export function ContactSection() {
