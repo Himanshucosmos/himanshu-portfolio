@@ -24,6 +24,10 @@ const QUOTES = [
   { text: "If I die before I reach my destination, there are no memories worth keeping.", source: "Jin — Samurai Champloo" },
   { text: "Don't live your life making excuses. Just run", source: "Mugen — Samurai Champloo" },
   { text: "The past makes you who you are. But it doesn't have to dictate who you'll become.", source: "Samurai Champloo" },
+  // Mentality / LinkedIn
+  { text: "FAFO: Find Around and Find Out.", source: "Mentality" },
+  { text: "Making a dent into the Universe.", source: "Vision" },
+  { text: "Triple Threat: Street smart, book smart, spiritual smart.", source: "Persona" },
 ];
 
 const SYMBOLS = ["滅", "魂", "斬", "道", "刃", "霊", "剣", "心", "天", "無", "ᚦ", "ᚢ", "ᛏ", "ᚹ", "ᚱ", "間", "力"];
@@ -79,6 +83,22 @@ function FloatingKanji() {
           {char}
         </div>
       ))}
+    </div>
+  );
+}
+
+function FloatingUniverseText() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0.05, 0.02, 0.05, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-oswald text-[15vw] uppercase text-center leading-none whitespace-nowrap"
+        style={{ color: "var(--foreground)", letterSpacing: "-0.02em" }}
+      >
+        Making a dent into <br /> the Universe
+      </motion.div>
     </div>
   );
 }
@@ -179,6 +199,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden" style={{ background: "var(--background)" }}>
       <AmbientBlobs />
+      <FloatingUniverseText />
       <FloatingKanji />
       <CanvasSlash />
 
@@ -226,7 +247,7 @@ export function HeroSection() {
             <div className="space-y-4">
               <QuoteRotator />
               <p className="font-space-mono text-xs leading-relaxed max-w-xs" style={{ color: "var(--fg-muted)" }}>
-                Hi — I&apos;m <span style={{ color: "var(--foreground)" }}>Himanshu</span>. Founders Office, Growth specialist, tech builder, bartender, DJ.
+                Hi — I&apos;m <span style={{ color: "var(--foreground)" }}>Himanshu</span>. A <span style={{ color: "var(--primary)" }}>Triple Threat</span> (Street/Book/Spiritual smart). Founders Office, Growth specialist, tech builder, bartender, DJ.
               </p>
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "var(--secondary)" }} />

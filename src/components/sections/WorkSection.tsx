@@ -45,20 +45,6 @@ const STATIC_PROJECTS = [
     color: "var(--tertiary)",
     glow: "rgba(139,92,246,0.25)",
   },
-  {
-    id: "04",
-    name: "coindcx-bot",
-    title: "CoinDCX Trading Bot",
-    subtitle: "Automated Futures System",
-    description:
-      "A 24/7 self-healing automated futures trading bot. Features dynamic TP/SL, multi-trade tracking, auto-cleanup of stale positions across 19 crypto markets. Private repo.",
-    tags: ["Python", "WebSocket", "Async", "19 Markets"],
-    live: null,
-    repo: null,
-    color: "var(--gold)",
-    glow: "rgba(245,166,35,0.25)",
-    private: true,
-  },
 ];
 
 // Vinland Saga Norse rune accent

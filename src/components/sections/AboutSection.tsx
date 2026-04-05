@@ -50,12 +50,14 @@ export function AboutSection() {
           <motion.div {...fadeInView(0.15)} className="flex flex-col gap-6">
             <div className="font-noto-jp text-4xl" style={{ color: "var(--secondary)", opacity: 0.3 }}>軌跡</div>
             <p className="font-space-mono text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>
-              I moved to Bangalore with a one-way ticket and blind faith. Night
-              shifts funded my studies — failures became redirections.
+              I moved to Bangalore with a one-way general ticket and blind faith. 
+              Night shifts at top bars funded my studies at a tier-100 college, where 
+              failing subjects became the redirection I needed to master Physics, 
+              Computer Science, and the art of human psychology.
             </p>
             <p className="font-space-mono text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>
-              From Science labs to bar counters, DJ booths, and now — Founders 
-              Office and driving Growth for innovative companies.
+              Today, I drive Founders Office strategy and Growth for innovative 
+              companies, blending technical rigor with street-tested intuition.
             </p>
           </motion.div>
 
@@ -105,6 +107,20 @@ export function AboutSection() {
               >
                 →
               </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mentality Showcase */}
+        <div className="grid md:grid-cols-3 gap-8 mt-16">
+          {[
+            { t: "Street Smart", d: "Bar counters to DJ booths—hustling in Bangalore's nightlife taught me more about human psychology than any textbook.", c: "var(--primary)" },
+            { t: "Book Smart",   d: "Physics & CS major. Engineering automated workflows for global auditors and scaling user bases by 20% through data.", c: "var(--secondary)" },
+            { t: "Spiritual Smart", d: "Navigating chaos with stoicism. Finding pattern in the noise of growth, tech, and life.", c: "var(--tertiary)" }
+          ].map((m, i) => (
+            <motion.div key={m.t} {...fadeInView(0.1 * i)} className="p-8 border grad-border" style={{ borderColor: "var(--border)" }}>
+              <div className="font-oswald text-xl uppercase mb-3" style={{ color: m.c }}>{m.t}</div>
+              <p className="font-space-mono text-xs leading-relaxed" style={{ color: "var(--fg-muted)" }}>{m.d}</p>
             </motion.div>
           ))}
         </div>

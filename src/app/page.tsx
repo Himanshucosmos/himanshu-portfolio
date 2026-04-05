@@ -4,6 +4,8 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { WorkSection } from "@/components/sections/WorkSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
+import { NightShiftSection } from "@/components/sections/NightShiftSection";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground overflow-hidden scanlines">
@@ -11,6 +13,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <WorkSection />
+      <NightShiftSection />
       <ContactSection />
     </main>
   );
