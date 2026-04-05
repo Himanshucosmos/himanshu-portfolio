@@ -22,24 +22,6 @@ const NIGHT_SHIFT_DATA = [
   }
 ];
 
-function VinylRecord() {
-  return (
-    <motion.div
-      animate={{ rotate: 360 }}
-      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-      className="relative w-48 h-48 rounded-full border-4 flex items-center justify-center overflow-hidden"
-      style={{ borderColor: "var(--fg-subtle)", background: "var(--surface-2)" }}
-    >
-      <div className="absolute inset-0 border-[20px] rounded-full border-black/10" />
-      <div className="w-12 h-12 rounded-full z-10" style={{ background: "var(--tertiary)", boxShadow: "0 0 20px var(--tertiary-dim)" }} />
-      {/* Grooves */}
-      <div className="absolute inset-4 border rounded-full border-white/5" />
-      <div className="absolute inset-8 border rounded-full border-white/5" />
-      <div className="absolute inset-12 border rounded-full border-white/5" />
-    </motion.div>
-  );
-}
-
 export function NightShiftSection() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
@@ -125,16 +107,6 @@ export function NightShiftSection() {
             ))}
           </div>
         </div>
-
-        {/* Visual Filler — Record component */}
-        <motion.div {...fadeInView(0.5)} className="mt-20 flex justify-center md:justify-end pr-20">
-          <div className="relative group">
-            <VinylRecord />
-            <div className="absolute -top-4 -left-4 font-space-mono text-[10px] tracking-[0.3em] uppercase opacity-20" style={{ color: "var(--tertiary)" }}>
-              Spinning / Night Shift
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
