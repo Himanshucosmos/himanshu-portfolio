@@ -5,7 +5,23 @@ import { useState, useEffect } from "react";
 
 // Real public repos from GitHub (Himanshucosmos)
 // Pre-populated from API — component also fetches live
-const STATIC_PROJECTS = [
+
+interface Project {
+  id: string;
+  name: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  tags: string[];
+  live: string | null;
+  repo: string | null;
+  color: string;
+  glow: string;
+  stars?: number;
+  private?: boolean;
+}
+
+const STATIC_PROJECTS: Project[] = [
   {
     id: "01",
     name: "ai-native-news-reporting",
@@ -177,16 +193,11 @@ export function WorkSection() {
                     <h3 className="font-oswald text-xl uppercase tracking-wide" style={{ color: "var(--foreground)" }}>
                       {project.title}
                     </h3>
-                    {"private" in project && project.private && (
-                      <span className="font-space-mono text-[9px] uppercase tracking-widest border px-1.5 py-0.5" style={{ borderColor: "var(--gold)", color: "var(--gold)" }}>
-                        Private
-                      </span>
-                    )}
                   </div>
                   <p className="font-space-mono text-xs mt-1" style={{ color: "var(--fg-muted)" }}>{project.subtitle}</p>
-                  {"stars" in project && typeof (project as { stars?: number }).stars === "number" && (
+                  {project.stars !== undefined && (
                     <p className="font-space-mono text-[10px] mt-1" style={{ color: "var(--gold)" }}>
-                      ★ {(project as { stars: number }).stars}
+                      ★ {project.stars}
                     </p>
                   )}
                 </div>
