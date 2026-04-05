@@ -199,7 +199,7 @@ export function HeroSection() {
           <motion.div variants={fadeUp} className="flex items-center gap-3">
             <div className="h-px w-10" style={{ background: "var(--primary)" }} />
             <span className="font-space-mono text-xs tracking-[0.22em] uppercase" style={{ color: "var(--primary)" }}>
-              — Chapter 01 / Growth & Operations
+              — Chapter 01 / Founders Office
             </span>
           </motion.div>
 
@@ -226,7 +226,7 @@ export function HeroSection() {
             <div className="space-y-4">
               <QuoteRotator />
               <p className="font-space-mono text-xs leading-relaxed max-w-xs" style={{ color: "var(--fg-muted)" }}>
-                Hi — I&apos;m <span style={{ color: "var(--foreground)" }}>Himanshu</span>. Growth specialist, tech builder, bartender, DJ.
+                Hi — I&apos;m <span style={{ color: "var(--foreground)" }}>Himanshu</span>. Founders Office, Growth specialist, tech builder, bartender, DJ.
               </p>
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "var(--secondary)" }} />

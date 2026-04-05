@@ -54,8 +54,8 @@ export function AboutSection() {
               shifts funded my studies — failures became redirections.
             </p>
             <p className="font-space-mono text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>
-              From Science labs to bar counters, DJ booths, and now — driving
-              Growth for innovative companies.
+              From Science labs to bar counters, DJ booths, and now — Founders 
+              Office and driving Growth for innovative companies.
             </p>
           </motion.div>
 
